@@ -1,0 +1,14 @@
+h1 {
+    text-align: center;
+}
+
+p {
+    justify-content: baseline;
+    text-align: justify;
+    font-size: 20px;
+}
+
+.boton {
+    width: 100%;
+    justify-content: center;
+}

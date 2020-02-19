@@ -1,0 +1,80 @@
+<div style="display: flex; flex-wrap:wrap; justify-content: space-evenly; align-items: start; padding: 20px;">
+
+    <div class="ms-card">
+        <div class="cabezera">
+            <img src="../../../assets/imagens/lenguajes.png" style="width: 50px;float: left;margin:auto;">
+            <h2>Lenguajes</h2>
+        </div>
+        <mat-accordion hideToggle *ngFor="let item of lenguajes; let i = index" style="align-items: center;margin: auto;">
+            <mat-expansion-panel style="margin:4px 0px" expanded="true" hideToggle="true">
+                <mat-expansion-panel-header>
+                    <div class="punto mat-elevation-z8" style="border: solid 2px ghostwhite;" [ngClass]="{'w3-green': item['level'] === 'basico', 'w3-amber':  item['level']  === 'intermedio', 'w3-purple':  item['level']  === 'avanzado'}">
+                    </div>
+                    <mat-panel-title style="justify-content:center">
+                        {{item.nombre}}
+                    </mat-panel-title>
+                    <img src="{{item.url}}" width="20px" style="align-items: center;padding: 0px 20px;">
+                </mat-expansion-panel-header>
+                <mat-action-row style="justify-content: space-evenly; padding: 8px;">
+                    <button mat-raised-button (click)="changeColorLanguages(i, 'basico')" class="w3-green"><b>Basico</b></button>
+                    <button mat-raised-button (click)="changeColorLanguages(i, 'intermedio')" class="w3-orange"><b>Intermedio</b></button>
+                    <button mat-raised-button (click)="changeColorLanguages(i, 'avanzado')" class="w3-purple">Avanzado</button>
+                </mat-action-row>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+
+    <div class="ms-card">
+        <div class="cabezera">
+            <img src="../../../assets/imagens/cloud.png" style="width: 50px;float: left;margin:auto;">
+            <h2>Google. Cloud</h2>
+        </div>
+        <mat-accordion *ngFor="let clo of clouds ; let c = index" style="align-items: center;margin: auto;">
+            <mat-expansion-panel style="margin:4px 0px">
+                <mat-expansion-panel-header class="w3-container w3-center-align">
+                    <div class="punto mat-elevation-z8" style="border: solid 2px ghostwhite;" [ngClass]="{'w3-green': clo['level'] === 'basico', 'w3-amber':clo['level'] === 'intermedio', 'w3-purple':  clo['level'] === 'avanzado'}">
+                    </div>
+                    <mat-panel-title style="justify-content:center">
+                        {{clo.nombre}}
+                    </mat-panel-title>
+                    <img src="{{clo.url}}" width="20px" style="justify-content: center;padding: 0px 13px;">
+                </mat-expansion-panel-header>
+                <mat-divider class="w3-white"></mat-divider>
+                <mat-panel-description style="justify-content: space-evenly; padding: 8px;">
+                    <button mat-raised-button class="w3-green" (click)="changeColorClouds(c,'basico')">Basico</button>
+                    <button mat-raised-button class="w3-orange" (click)="changeColorClouds(c,'intermedio')">Intermedio</button>
+                    <button mat-raised-button class="w3-purple" (click)="changeColorClouds(c,'avanzado')">Avanzado</button>
+                </mat-panel-description>
+            </mat-expansion-panel>
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+
+    <div class="ms-card">
+        <div class="cabezera">
+            <img src="../../../assets/imagens/frame.png" style="width: 50px;float: left;margin:auto;">
+            <h2>Frameworks</h2>
+        </div>
+        <mat-accordion *ngFor="let frame of frameworks ; let f = index">
+            <mat-expansion-panel style="margin:4px 0px">
+                <mat-expansion-panel-header class="w3-container w3-center-align">
+                    <div class="punto mat-elevation-z8" style="border: solid 2px ghostwhite;" [ngClass]="{'w3-green': frame['level'] === 'basico', 'w3-amber':frame['level'] === 'intermedio', 'w3-purple':  frame['level'] === 'avanzado'}"></div>
+                    <mat-panel-title style="justify-content:center">
+                        {{frame.nombre}}
+                    </mat-panel-title>
+                    <img src="{{frame.url}}" width="20px" style="align-items: center;padding: 0px 13px;">
+                </mat-expansion-panel-header>
+                <mat-divider class="w3-white"></mat-divider>
+                <mat-panel-description style="justify-content: space-evenly; padding: 8px;">
+                    <button mat-raised-button (click)="changeColorFrameworks(f,'basico')" class="w3-green">Basico</button>
+                    <button mat-raised-button (click)="changeColorFrameworks(f,'intermedio')" class="w3-orange">Intermedio</button>
+                    <button mat-raised-button (click)="changeColorFrameworks(f,'avanzado')" class="w3-purple">Avanzado</button>
+                </mat-panel-description>
+            </mat-expansion-panel>
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+
+</div>
