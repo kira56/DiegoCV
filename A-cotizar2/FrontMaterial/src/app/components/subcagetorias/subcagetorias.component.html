@@ -1,0 +1,7 @@
+<div mat-dialog-content fxLayout="column" fxLayoutAlign="center none" style="width: 300px;height: 300px;">
+    <div style="padding: 5px;" mat-dialog-actions fxLayout="column" fxLayoutAlign="center none" >
+        <label for="">SUBCATEGORIAS</label>
+        <button (click)="subcategoriaSelect(i,sub.nombre)" cdkFocusInitial mat-raised-button color="warn" *ngFor="let sub of subcat,let i = index"> {{sub.nombre}}</button>
+        
+    </div>
+</div>

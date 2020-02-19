@@ -1,0 +1,62 @@
+<form id="regForm" [formGroup]="cotizarForm">
+    AUN EN PROCESO DE ARMADO
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" style="margin-top: 50px;">
+        <mat-horizontal-stepper labelPosition="bottom" #stepper style="width: 80%">
+            <mat-step formGroupName="categoria" [stepControl]="cotizarForm.get('categoria')">
+                <ng-template matStepLabel>Que va a Cotizar?</ng-template>
+
+                <mat-card>
+                    <app-stepper1 [regForm]="cotizarForm"></app-stepper1>
+                </mat-card>
+            </mat-step>
+
+            <!-- <mat-step formGroupName="subcategoria" [stepControl]="cotizarForm.get('subcategoria')">
+                <ng-template matStepLabel> Categoria</ng-template>
+                <mat-card fxLayoutAlign="space-around center" style="margin-top: 10px;margin-bottom: 10px;height: 500px;">
+                    <app-stepper2 [regForm]="cotizarForm"></app-stepper2>
+                </mat-card>
+            </mat-step> -->
+
+            <mat-step formGroupName="datosProducto" [stepControl]="cotizarForm.get('datosProducto')">
+                <ng-template matStepLabel> Datos del Producto</ng-template>
+                <mat-card style="margin-bottom: 10px;height: auto;">
+                    <app-stepper3 [regForm]="cotizarForm"></app-stepper3>
+                </mat-card>
+            </mat-step>
+
+            <mat-step>
+                <ng-template matStepLabel>Confirmacion</ng-template>
+                <mat-card fxLayoutAlign="space-around center" style="margin-top: 10px;margin-bottom: 10px;height: 500px;">
+                    <app-stepper4 [regForm]="cotizarForm"></app-stepper4>
+                </mat-card>
+            </mat-step>
+        </mat-horizontal-stepper>
+    </div>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+S

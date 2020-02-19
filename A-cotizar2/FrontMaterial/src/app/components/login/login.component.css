@@ -1,0 +1,22 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.card {
+    width: 400px;
+    margin-top: 50px;
+    padding: 20px;
+    margin-bottom: 50px;
+}
+
+mat-form-field {
+    display: block;
+    position: relative;
+    flex: auto;
+    min-width: 100%;
+    width: 350px;
+    font-family: 'Muli', sans-serif;
+}

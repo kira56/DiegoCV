@@ -1,0 +1,61 @@
+<!-- ============================================================== -->
+<!-- Left Sidebar - style you can find in sidebar.scss  -->
+<!-- ============================================================== -->
+<aside class="left-sidebar">
+    <!-- Sidebar scroll-->
+    <div class="scroll-sidebar">
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav">
+            <ul id="sidebarnav">
+                <li class="user-profile">
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><img src="../assets/images/users/profile.png" alt="user" /><span class="hide-menu">Joe Barrionuevo M.</span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a routerLinkActive="active" [routerLink]="['/cliente']">Dashboard</a></li>
+                        <li><a routerLinkActive="active" [routerLink]="['/cliente/perfil']">Perfil </a></li>
+                        <li><a routerLinkActive="active" [routerLink]="['/cliente/cuenta']">Datos de la Cuenta </a></li>
+                        <li><a routerLinkActive="active" [routerLink]="['/login']">Logout</a></li>
+                    </ul>
+                </li>
+                <li class="nav-devider"></li>
+                <li class="nav-small-cap">A-COTIZAR</li>
+                <li>
+                    <a class="has-arrow waves-effect waves-dark" aria-expanded="false">
+                        <i class="fa fa-product-hunt"></i>
+                        <span class="hide-menu">Productos <span
+                            class="label label-rouded label-themecolor pull-right">2</span></span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li>
+                            <a [routerLink]="['/cliente/cotizaciones']" routerLinkActive="active">Cotiza Ya !!</a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/cliente/dashboard']" routerLinkActive="active">Ver Productos</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-devider"></li>
+                <li class="nav-small-cap">MIS COTIZACIONES</li>
+                <li>
+                    <a class="has-arrow waves-effect waves-dark" aria-expanded="false"><i
+                            class="mdi mdi-gauge"></i><span class="hide-menu">Principal <span
+                                class="label label-rouded label-themecolor pull-right">2</span></span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li>
+                            <a [routerLink]="['/cliente/miscotizaciones']" routerLinkActive="active">Pendientes</a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/cliente/atendidas']" routerLinkActive="active">Atendidas</a>
+                        </li>
+
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+    </div>
+    <!-- End Sidebar scroll-->
+</aside>
+<!-- ============================================================== -->
+<!-- End Left Sidebar - style you can find in sidebar.scss  -->
+<!-- ============================================================== -->

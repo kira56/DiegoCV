@@ -1,0 +1,34 @@
+<div *ngIf="subcategorias;then subcategoria else categoria">
+    <!-- AQUI APARECEN LAS SUBCATEGORIAS -->
+</div>
+<ng-template #subcategoria>
+    <!-- Template de Subcategorias -->
+    <div *ngFor="let cat of misCategorias">
+        <div *ngIf="cat.categoria === 'CONSTRUCCION'">
+            <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="gappx" style="padding: 20px;">
+                <button mat-raised-button style="height: 100px;width: 100px;" color="accent" *ngFor="let sub of cat.subcategorias" [ngSwitch]="cat.subcategorias" (click)="anadirSubcategoria(sub)">
+                {{sub}}</button>
+            </div>
+        </div>
+        <!-- <div *ngIf="cat.categoria === 'ABARROTES'">
+            <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="gappx" style="padding: 20px;">
+                <button mat-raised-button style="height: 100px;width: 100px;" color="accent" *ngFor="let sub of cat.subcategorias" [ngSwitch]="cat.subcategorias" (click)="anadirSubcategoria(sub)">
+                {{sub}}</button>
+            </div>
+        </div> -->
+    </div>
+
+
+    <div fxLayoutAlign="center center" style="margin-top: 30px;">
+        <button mat-raised-button color="primary" matStepperPrevious>Atras</button>
+        <button mat-raised-button color="warn" style="margin-left: 5px;" matStepperNext (click)="anadirListaProductos();">Siguiente</button>
+    </div>
+</ng-template>
+
+<ng-template #categoria>
+    <!-- Templates de Categorias -->
+
+    <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="gappx">
+        <button style="width: 200px;height: 300px;" *ngFor="let cat of misCategorias" mat-raised-button color="primary" (click)="anadirCategoria(cat.categoria);subcategorias=misCategorias">{{cat.categoria}}</button>
+    </div>
+</ng-template>

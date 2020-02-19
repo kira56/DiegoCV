@@ -1,0 +1,71 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-body">
+            <h3 class="box-title m-b-0">Credenciales de Acceso</h3>
+            <p class="text-muted m-b-30 font-13">Al sistema Web </p>
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <form #f="ngForm" (ngSubmit)="ActualizarCuenta()">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-email"></i></div>
+                                <input [(ngModel)]="objUsuario.usu_email" name="email" type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" disabled>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Password</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="ti-lock"></i></div>
+                                        <input [(ngModel)]="objUsuario.usu_pass" name="pass" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Password</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="ti-lock"></i></div>
+                                        <input name="pass2" type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirm Password">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="tipo">Tipo</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="ti-user"></i></div>
+                                        <input [(ngModel)]="objUsuario.usu_tipo" name="tipo" type="text" class="form-control" id="tipo"  disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="estado">Estado</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="ti-key"></i></div>
+                                        <input [(ngModel)]="objUsuario.usu_est" name="estado" type="text" class="form-control" id="estado" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+                            <i class="fa fa-save"></i>
+                            Grabar
+                        </button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,27 @@
+<div fxLayout="row wrap">
+    <div fxFlex="100" fxFlex.gt-md="650px" fxFlex.gt-sm="10">
+        <mat-card class="default">
+            <mat-card-title>Informacion</mat-card-title>
+            <mat-card-content>
+                <div fxLayout="row wrap" class="doughnut-grid text-center">
+                    <div fxFlex="50" class="doughnut-grid-item mat-bg-primary">
+                        <canvas baseChart class="chart" [data]="doughnutChartData1" [options]="doughnutOptions" [colors]="doughnutChartColors" [chartType]="doughnutChartType"></canvas>
+                        <small>Cotizaciones disponibles: {{data1}}/{{total1}} Disponibles</small>
+                    </div>
+                    <div fxFlex="50" class="doughnut-grid-item light-gray">
+                        <canvas baseChart class="chart" [data]="doughnutChartData2" [options]="doughnutOptions" [colors]="doughnutChartColors" [chartType]="doughnutChartType"></canvas>
+                        <small>Corizaciones Solicitadas</small>
+                    </div>
+                    <div fxFlex="50" class="doughnut-grid-item light-gray">
+                        <canvas baseChart class="chart" [data]="doughnutChartData2" [options]="doughnutOptions" [colors]="doughnutChartColors" [chartType]="doughnutChartType"></canvas>
+                        <small>Dinero Invertido: $5000</small>
+                    </div>
+                    <div fxFlex="50" class="doughnut-grid-item mat-bg-primary">
+                        <canvas baseChart class="chart" [data]="doughnutChartData2" [options]="doughnutOptions" [colors]="doughnutChartColors" [chartType]="doughnutChartType"></canvas>
+                        <small>Seguidores: 2000</small>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

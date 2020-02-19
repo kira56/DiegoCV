@@ -1,0 +1,63 @@
+<div class="row animated fadeIn">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <mat-form-field>
+                    <mat-label>Elija una Categoria</mat-label>
+                    <mat-select [(value)]="selectedSCat" (selectionChange)="getSelectedSCat()">
+                        <mat-option [value]="cat.cat_id" *ngFor="let cat of categorias">{{cat.cat_nom}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+    
+                <br>
+                <mat-form-field>
+                    <mat-label>Elija una Sub Categoria</mat-label>
+                    <mat-select [(value)]="selectedSCat1" (selectionChange)="getSelectedSCat1()">
+                        <mat-option [value]="scat.scat_id" *ngFor="let scat of subcategorias">{{scat.scat_nom}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <br>
+                <mat-form-field class="example-container">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <input type="text" placeholder="Producto a Cotizar" matInput [formControl]="myControl" [matAutocomplete]="auto" [(ngModel)]="prod_nomb">
+                        </div>
+                        <div class="col-md-3">
+                            <button mat-mini-fab color="primary" (click)="anadirProductoLocal()">Add</button>
+                        </div>
+                    </div>
+                    <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of productos" [value]="option.prod_id + '.' + option.prod_nomb">
+                            <small>ID:{{option.prod_id}}</small> |
+                            <span>{{option.prod_nomb}}</span>
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Producto</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let f of ListaProductos; index as i ">
+                    <td>{{f.prod_id}}</td>
+                    <td>{{f.prod_nomb}}</td>
+                    <td style="display: flex;">
+                        <button class="btn btn-danger ml-2" (click)="removeItem(i)"> <i class="fas fa-trash-alt    "></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <button class="btn btn-info btn-lg" (click)="guardarDatos()">Guardar</button>
+    </div>
+</div>

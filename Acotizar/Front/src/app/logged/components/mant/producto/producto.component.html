@@ -1,0 +1,155 @@
+<!--====================================
+     MODAL CREAR ´PRODUCTOS
+==================================== -->
+<div class="modal fade" id="modalCrear" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">PRODUCTOS</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form class="mt-4 " #formulario="ngForm">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Categoria</label>
+                                    <select class="form-control" name="selectCat" [(ngModel)]="selectedSCat" (change)="getSelectedSCat()">
+                                        <option [value]="cat.cat_id" *ngFor="let cat of categorias">{{cat.cat_nom}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>SubCategoria</label>
+                                    <select class="form-control" name="selectSCat" [(ngModel)]="objProductoNew.scat_id">
+                                        <option [ngValue]="scat" [value]="scat.scat_id" *ngFor="let scat of subcategorias">{{scat.scat_nom}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="">Nombre:</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objProductoNew.prod_nomb" name="prod_nomb" placeholder="Nombre del Producto">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-block btn-lg btn-dark" [disabled]="!formulario.valid" (click)="CrearProducto()">
+                        <i class="fas fa-save"></i>
+                        Registrar
+                    </button>
+                    <button type="submit" class="btn btn-block btn-lg btn-dark" (click)="Cancelar()">
+                        <i class="fas fa-arrow-alt-circle-left"></i> Volver
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--====================================
+     MODAL EDITAR PRODUCTOS
+==================================== -->
+<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">PRODUCTOS</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form class="mt-4 " #formularios="ngForm">
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Id del Producto:</label>
+                                    <input type="text" required class="form-control" [(ngModel)]="objProducto.prod_id" name="prod_id" disabled>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Nombre:</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objProducto.prod_nomb" name="prod_nomb">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Categoria:</label>
+                                    <input type="text" class="form-control" required name="cat_id">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">SubCategoria:</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objProducto.scat_id" name="scat_id">
+                                </div>
+                            </div>
+                        </div>
+
+                        <br>
+                        <hr>
+                        <hr>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-block btn-lg btn-dark" [disabled]="!formularios.valid" (click)="Guardar()">
+                                            <i class="fas fa-save"></i>
+                                            Guardar Producto
+                                        </button>
+                            <br>
+                            <button type="submit" class="btn btn-block btn-lg btn-dark" (click)="Cancelar()">
+                                <i class="fas fa-arrow-alt-circle-left"></i> Volver
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--====================================
+     LISTAR PRODUCTOS
+==================================== -->
+
+<div class="container">
+    <div>
+        <div class="alert alert-success text-center" role="alert" *ngIf="!productos">
+            <h4 class="alert-heading">Cargando..</h4>
+            <p>
+                <i class="fa fa-refresh fa-3x fa-spin" aria-hidden="true"></i>
+            </p>
+        </div>
+        <div *ngIf="productos" class="animated slideInLeft">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre Producto</th>
+                        <th>Sub Categoria</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let prod of productos.content">
+                        <td>{{prod.prod_id}}</td>
+                        <td>{{prod.prod_nomb}}</td>
+                        <td>{{prod.scat_id}}</td>
+
+                        <td style="display: flex;">
+                            <button class="btn btn-danger" (click)="eliminarProducto(prod.prod_id)">
+                                <i class="fas fa-trash"></i>
+                            </button>
+
+                            <button class="btn btn-secondary ml-2" (click)="abrirModalEditar(prod.prod_id)">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </td>
+                        <!-- <td>JOe</td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button class="btn btn-dark btnCrear animated tada infinite slow" (click)="AbrirModalCrearProducto()">
+                <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+            </button>
+    </div>
+</div>

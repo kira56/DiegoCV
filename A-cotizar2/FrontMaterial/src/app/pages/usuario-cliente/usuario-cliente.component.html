@@ -1,0 +1,45 @@
+<mat-drawer-container class="example-container" style="height: 60%;">
+    <mat-drawer mode="side" opened>
+        <mat-card style="width: 350px;" #sidenav mode="side">
+            <mat-card class="profile-sidebar mb-1 pb-0">
+                <div class="propic text-center">
+                    <img class="propic" *ngIf="user" src="{{user.photoUrl}}">
+                    <img class="propic" *ngIf="!user" src="./../../img/miranda.jpg">
+                </div>
+                <div class="profile-title text-center mb-1">
+                    <p><b>Bienvenido</b></p>
+                    <div class="main-title" *ngIf="user">{{user.name}} </div>
+                    <br>
+                    <div class="subtitle mb-05"><b>Datos : </b> </div>
+                    <div class="text-muted">Bienvenido al sistema de edicion del Perfil del Usuario</div>
+                </div>
+                <div class="profile-actions mb-1" fxLayoutAlign="center center">
+                    <button mat-raised-button color="primary">Message</button>
+                    <span fxFlex="8px"></span>
+                    <button mat-raised-button color="accent">Follow</button>
+                </div>
+                <div class="profile-nav">
+                    <mat-nav-list>
+                        <mat-list-item routerLink="/usuarioCliente/overview" routerLinkActive="list-item-active">
+                            <mat-icon>home</mat-icon>
+                            Cotizaciones
+                        </mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item routerLink="/usuarioCliente/settings" routerLinkActive="list-item-active">
+                            <mat-icon>settings</mat-icon>
+                            Ajustes
+                        </mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item routerLink="/usuarioCliente/blank" routerLinkActive="list-item-active">
+                            <mat-icon>content_paste</mat-icon>
+                            Informacion
+                        </mat-list-item>
+                    </mat-nav-list>
+                </div>
+            </mat-card>
+        </mat-card>
+    </mat-drawer>
+    <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="calc(100% - 300px)" style="height:60%">
+        <router-outlet></router-outlet>
+    </div>
+</mat-drawer-container>

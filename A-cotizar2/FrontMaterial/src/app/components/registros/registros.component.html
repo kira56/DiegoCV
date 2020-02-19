@@ -1,0 +1,150 @@
+<!-- REGISTRO PROVEEDOR -->
+
+<div class="cards" fxLayout="column" fxLayoutAlign="center center">
+    <h4>¡REGISTRATE COMO PROVEEDOR!</h4>
+    <span>Y ten un mejor contacto con tus clientes y sus necesidas dentro de la red de cotizacion mas efectiva online</span>
+    <mat-card style="width: 500px;height: auto;margin-top: 30px;margin-bottom:50px;padding: 40px;">
+        <form style="display: flex;flex-direction: column;margin-top: 10px;" class="formularioProovedor" name="form">
+
+            <label fxLayoutAlign="center center"><strong>Datos de la Cuenta</strong></label>
+
+            <mat-form-field>
+                <input matInput placeholder="Ingrese su email" [(ngModel)]="objUsuario.usu_email" name="usu_email" [formControl]="email" required>
+                <mat-icon matSuffix>email</mat-icon>
+                <mat-error *ngIf="email.invalid">{{mensajeError()}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Password" [(ngModel)]="objUsuario.usu_pass" name="usu_pass" [type]="hide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon >{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Repite tu Password" [type]="hide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon >{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+            </mat-form-field>
+            <hr>
+            <label fxLayoutAlign="center center"><strong>Datos del Proveedor</strong></label>
+
+            <mat-form-field>
+                <textarea matInput placeholder="Nombre"></textarea>
+                <mat-icon matSuffix>sentiment_satisfied_alt
+                </mat-icon>
+            </mat-form-field>
+            <mat-form-field>
+                <textarea matInput placeholder="Apellidos"></textarea>
+                <mat-icon matSuffix>sentiment_satisfied_alt
+                </mat-icon>
+            </mat-form-field>
+            <mat-form-field>
+                <input type="number" name="DNI" matInput placeholder="Ingrese DNI">
+                <mat-icon matSuffix>image_aspect_ratio
+                </mat-icon>
+            </mat-form-field>
+
+            <hr>
+            <!-- Datos de la Empresa -->
+            <label fxLayoutAlign="center center"><strong>Datos de la Empresa</strong></label>
+
+            <mat-form-field>
+                <input matInput placeholder="Razon Social" [(ngModel)]="objProveedor.prov_rz" name="prov_rz">
+                <mat-icon matSuffix>work</mat-icon>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input type="number" name="RUC" matInput placeholder="Ingrese RUC" [(ngModel)]="objProveedor.prov_RUC" name="prov_RUC">
+                <mat-icon matSuffix>fingerprint</mat-icon>
+            </mat-form-field>
+            <mat-form-field>
+                <textarea matInput placeholder="PWeb" [(ngModel)]="objProveedor.prov_pweb" name="prov_pweb"></textarea>
+                <mat-icon matSuffix>room</mat-icon>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Categoria</mat-label>
+                <select matNativeControl [(ngModel)]="provcat.cat_id" name="cat_id">
+                  <option value="" selected></option>
+                  <option *ngFor="let cat of categorias" [value]="cat.cat_id">
+                    {{cat.cat_nom}}
+                  </option>
+                </select>
+            </mat-form-field>
+            <table style="width: 100%;">
+                <tr>
+                    <td>
+                        <mat-form-field style="width: 160px;">
+                            <input style="width: 60px;" type="text" matInput placeholder="Departamento" required [matAutocomplete]="autoGroup">
+                            <mat-icon matSuffix>map</mat-icon>
+
+                            <mat-autocomplete #autoGroup="matAutocomplete">
+                                <mat-optgroup *ngFor="let group of distritoGroupOptions | async" [label]="group.letra">
+                                    <mat-option *ngFor="let nombre of group.nombres" [value]="nombre">
+                                        {{nombre}}
+                                    </mat-option>
+                                </mat-optgroup>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field style="width: 160px;">
+                            <input type="text" matInput placeholder="Provincia" required [matAutocomplete]="autoGroup">
+                            <mat-icon matSuffix>location_city</mat-icon>
+
+                            <mat-autocomplete #autoGroup="matAutocomplete">
+                                <mat-optgroup *ngFor="let group of distritoGroupOptions | async" [label]="group.letra">
+                                    <mat-option *ngFor="let nombre of group.nombres" [value]="nombre">
+                                        {{nombre}}
+                                    </mat-option>
+                                </mat-optgroup>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field style="width: 160px;">
+                            <input style="width: 100%;" type="text" matInput placeholder="Distrito" required [matAutocomplete]="autoGroup">
+                            <mat-icon matSuffix>home</mat-icon>
+
+                            <mat-autocomplete #autoGroup="matAutocomplete">
+                                <mat-optgroup *ngFor="let group of distritoGroupOptions | async" [label]="group.letra">
+                                    <mat-option *ngFor="let nombre of group.nombres" [value]="nombre">
+                                        {{nombre}}
+                                    </mat-option>
+                                </mat-optgroup>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                    </td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td>
+                        <mat-form-field>
+                            <span matPrefix>+1 &nbsp;</span>
+                            <input type="tel" matInput placeholder="Telefono">
+                            <mat-icon matSuffix>mode_edit</mat-icon>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field>
+                            <span matPrefix>+51 &nbsp;</span>
+                            <input type="tel" matInput placeholder="Celular">
+                            <mat-icon matSuffix>phone_callback
+                            </mat-icon>
+                        </mat-form-field>
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+        <br>
+        <mat-checkbox required style="font-size: 3px;" [(ngModel)]="checked">Declaro que he leido la nueva Politica de Privacidad y los Términos y Condiciones y que tu alma le pertenecera a Marco </mat-checkbox>
+        <br>
+        <div class="boton" style="margin-top: 30px;" fxLayoutAlign="center center">
+            <button style="width: 100%;" mat-raised-button color="warn" (click)="RegistrarProve()">Registrarse</button>
+        </div>
+
+    </mat-card>
+</div>

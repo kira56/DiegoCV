@@ -1,0 +1,97 @@
+<mat-horizontal-stepper labelPosition="bottom" #stepper style="width: 80%">
+    <mat-step label="CATEGORIA">
+        <p>Elija en la Categoria que desees cotizar </p>
+        <mat-card>
+            <!-- <app-stepper1></app-stepper1> -->
+            <mat-form-field>
+                <mat-label>Elija una Categoria</mat-label>
+                <mat-select [(value)]="selectedSCat" (selectionChange)="getSelectedSCat()">
+                    <mat-option [value]="cat.cat_id" *ngFor="let cat of categorias">{{cat.cat_nom}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <br>
+            <mat-form-field>
+                <mat-label>Elija una Sub Categoria</mat-label>
+                <mat-select [(value)]="selectedSCat1" (selectionChange)="getSelectedSCat1()">
+                    <mat-option [value]="scat.scat_id" *ngFor="let scat of subcategorias">{{scat.scat_nom}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+
+        </mat-card>
+    </mat-step>
+    <mat-step label="acotizar">
+        <p>¿Que Producto desea Cotizar ?</p>
+        <mat-card>
+            <!-- <app-stepper2></app-stepper2> -->
+            <div class="row">
+                <div class="col-md-4">
+                    <mat-form-field class="example-container">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <!-- 1- AGREGAMOS UN MATINPUT DENTRO DE UN FORMULARIO REACTIVO -->
+
+                                <input type="text" placeholder="Producto a Cotizar" matInput [formControl]="myControl" [matAutocomplete]="auto" [(ngModel)]="prod_nomb">
+
+                            </div>
+                            <div class="col-md-3">
+                                <button mat-mini-fab color="primary" (click)="anadirProductoLocal()">Add</button>
+                            </div>
+                        </div>
+                        <!-- <i class="mdi mdi-plus-circle mdi-36px"></i> -->
+                        <!--  2-  PANEL AUTOCOMPLETAR -->
+                        <mat-autocomplete #auto="matAutocomplete">
+                            <mat-option *ngFor="let option of productos" [value]="option.prod_id + '.' + option.prod_nomb">
+                                <small>ID:{{option.prod_id}}</small> |
+                                <span>{{option.prod_nomb}}</span>
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+
+                </div>
+                <div class="col-md-8">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>Producto</th>
+                                <th>Cantidad</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let f of ListaProductos; index as i ">
+                                <td>{{f.prod_id}}</td>
+                                <td>{{f.prod_nomb}}</td>
+                                <td> <input type="number" #cantInput (input)="testChange($event,i)"> </td>
+                                <td style="display: flex;">
+                                    <button class="btn btn-danger ml-2" (click)="removeItem(i)"> <i class="fas fa-trash-alt    "></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </mat-card>
+    </mat-step>
+    <mat-step label="Confirma">
+        <p>Confirmacion</p>
+        <mat-card>
+            <button (click)="enviarCotizacion()">
+                ENVIAR Cotizacion
+            </button>
+            
+            <!-- <app-stepper3></app-stepper3> -->
+
+
+        </mat-card>
+    </mat-step>
+</mat-horizontal-stepper>

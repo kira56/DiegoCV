@@ -1,0 +1,23 @@
+<div *ngIf="formSubmitted">
+    <h4>Cotizacion enviada correctamente!</h4>
+</div>
+<div *ngIf="!formSubmitted">
+    <h4>Detalles de la cotizacion,Presione enviar si esta conforme</h4>
+    <br/>CATEGORIA: {{regForm.get('categoria').get('categoria')}}
+    <br/> SUBCATEGORIA : {{regForm.get('subcategoria').get('subcategoria').value}}
+    <br/> Producto:{{regForm.get('datosProducto').get('producto').value}}
+    <br/> Cantidad:{{regForm.get('datosProducto').get('cantidad').value}}
+    <br/> Medida:{{regForm.get('datosProducto').get('medida').value}}
+    <br/> Descripcion:{{regForm.get('datosProducto').get('descripcion').value}}
+    <br/> Ciudad:{{regForm.get('datosProducto').get('ciudad').value}}
+    <button mat-raised-button color="accent" type="button" matStepperPrevious>Back</button >
+    &nbsp;
+    <button mat-raised-button color="accent" type="button" (click)="submit()">Enviar</button>
+</div>
+
+<!-- <mat-label>Favorite food</mat-label>
+<mat-radio-group>
+    <mat-radio-button style="width: 150px;height: 200px;" *ngFor="let cate of categorias" [value]="cate.value">
+        {{cate}}
+    </mat-radio-button>
+</mat-radio-group> -->

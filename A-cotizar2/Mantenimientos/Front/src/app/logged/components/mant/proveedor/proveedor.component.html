@@ -1,0 +1,187 @@
+<!-- Crear Categoria -->
+
+<div class="modal fade" id="modalCrear" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Crear Proveedor</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form class="mt-4 " #formulario="ngForm">
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Email:</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objNewUsuario.usu_email" name="cat_nom" placeholder="Ejm: Computadora,Television,etc">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Pass:</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objNewUsuario.usu_pass" name="usu_pass" placeholder="Ejm: Computadora,Television,etc">
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Tipo:</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objNewUsuario.usu_tipo" name="usu_tipo" disabled>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Razon Social:</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objProveedorNew.prov_rz" name="prov_rz" placeholder="Ejm: Computadora,Television,etc">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">RUC:</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objProveedorNew.prov_RUC" name="prov_RUC" placeholder="Ejm: Computadora,Television,etc">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Pag. Web:</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objProveedorNew.prov_pweb" name="prov_pweb" placeholder="Ejm: 994874575,988544887,etc">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Direccion:</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objProveedorNew.prov_dir" name="prov_dir" placeholder="Ejm: Sachaca,Tahuaycani,etc">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="">Categoria:</label>
+                                    <select name="miselect" [(ngModel)]="provcat.cat_id">
+                                        <option [value]="cat.cat_id" *ngFor="let cat of categorias">{{cat.cat_nom}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-block btn-lg btn-dark" [disabled]="!formulario.valid" (click)="CrearProveedor()">
+                        <i class="fas fa-save"></i>
+                        Crear Proveedor
+                    </button>
+                    <button type="submit" class="btn btn-block btn-lg btn-dark" (click)="Cancelar()">
+                        <i class="fas fa-arrow-alt-circle-left"></i> Volver
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modificar Datos Proveedor -->
+
+<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Bienvenido al menu editar</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form class="mt-4 " #formularios="ngForm">
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Id de la Proveedor:</label>
+                                    <input type="text" required class="form-control" [(ngModel)]="objProveedor.prov_id" name="prov_id" disabled>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Razon Social:</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objProveedor.prov_rz" name="prov_rz" placeholder="Ejm: Computadora,Television,etc">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">RUC:</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objProveedor.prov_RUC" name="prov_RUC" placeholder="Ejm: Computadora,Television,etc">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Pag. Wrb:</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objProveedor.prov_pweb" name="prov_pweb" placeholder="Ejm: 994874575,988544887,etc">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Direccion:</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objProveedor.prov_dir" name="prov_dir" placeholder="Ejm: Sachaca,Tahuaycani,etc">
+                                </div>
+                            </div>
+                        </div>
+
+                        <br>
+                        <hr>
+                        <hr>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-block btn-lg btn-dark" [disabled]="!formularios.valid" (click)="Guardar()">
+                                            <i class="fas fa-save"></i>
+                                            Guardar Proveedor
+                                        </button>
+                            <br>
+                            <button type="submit" class="btn btn-block btn-lg btn-dark" (click)="Cancelar()">
+                                <i class="fas fa-arrow-alt-circle-left"></i> Volver
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div>
+        <div class="alert alert-success text-center" role="alert" *ngIf="!proveedores">
+            <h4 class="alert-heading">Cargando..</h4>
+            <p>
+                <i class="fa fa-refresh fa-3x fa-spin" aria-hidden="true"></i>
+            </p>
+        </div>
+        <div *ngIf="proveedores" class="animated slideInLeft">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Razon Social</th>
+                        <th>Ruc</th>
+                        <th>Pagina Web</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let prov of proveedores.contenido">
+                        <td>{{prov.prov_id}}</td>
+                        <td>{{prov.prov_rz}}</td>
+                        <td>{{prov.prov_RUC}}</td>
+                        <td>{{prov.prov_pweb}}</td>
+                        <td style="display: flex;">
+                            <button class="btn btn-danger" (click)="eliminarProveedor(prov.prov_id)">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+
+                            <button class="btn btn-secondary ml-2" (click)="abrirModalEditar(prov.prov_id)">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button class="btn btn-dark btnCrear animated tada infinite slow" (click)="AbrirModalCrearProveedor()">
+                <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+            </button>
+    </div>
+</div>

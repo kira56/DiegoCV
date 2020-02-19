@@ -1,0 +1,45 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+
+    <mat-card class="card">
+        <mat-card-header style="margin-top: 15px;" fxLayoutAlign="center center">
+            <mat-card-title>INICIAR SESION</mat-card-title>
+            <mat-card-title fxLayoutAlign="center center">
+                <img src="./../../../assets/imagens/personas.png" width="150px" style="border-radius: 50%;">
+            </mat-card-title>
+
+        </mat-card-header>
+
+        <mat-card-content style="display: flex;flex-direction: column;align-items: center;padding: 15px;width:auto;">
+            <mat-form-field>
+                <input matInput placeholder="Ingrese su usuario" [(ngModel)]="objLogin.usu_email" name="usu_email" [formControl]="email" required>
+                <mat-icon matSuffix class="material-icons-two-tone">pets</mat-icon>
+
+                <!-- <mat-error *ngIf="email.invalid">{{emailError()}}</mat-error> -->
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Contraseña" [(ngModel)]="objLogin.usu_pass" name="usu_pass" [type]=" 'hide' ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="hide = !'hide'" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="'hide'">
+                        <mat-icon class="material-icons-two-tone">{{'hide' ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" (click)="iniciarSesion()">Iniciar Sesion </button>
+            <hr>
+            <div class="texto" fxLayout="row" fxLayoutAlign="space-evenly stretch">
+                <a>Se te olvido la contraseña? haz click</a>
+                <a href="#" style="color: red;"> Aqui</a>
+            </div>
+
+            <hr>
+
+            <div style="width: 100%;" fxLayout="row" fxLayoutAlign="space-around none">
+
+                <button mat-stroked-button color="warn" (click)="signInWithGoogle()"><i class="fa fa-google" aria-hidden="true"></i> Iniciar con Google</button>
+                <button mat-stroked-button color="primary" (click)="signInWithFB()"> <i class="fa fa-facebook" aria-hidden="true"></i> Iniciar con Facebook</button>
+            </div>
+
+        </mat-card-content>
+    </mat-card>
+
+</div>

@@ -1,0 +1,83 @@
+<!-- ============================================================== -->
+<!-- Left Sidebar - style you can find in sidebar.scss  -->
+<!-- ============================================================== -->
+<aside class="left-sidebar">
+    <!-- Sidebar scroll-->
+    <div class="scroll-sidebar">
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav">
+            <ul id="sidebarnav">
+                <li class="user-profile">
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><img src="../assets/images/users/profile.png" alt="user" /><span class="hide-menu">Steave Jobs
+                        </span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="javascript:void()">My Profile </a></li>
+                        <li><a href="javascript:void()">My Balance</a></li>
+                        <li><a href="javascript:void()">Inbox</a></li>
+                        <li><a [routerLink]="['/account-settings']" [routerLinkActive]="'active'">Account
+                                Setting</a></li>
+                        <li><a [routerLink]="['/login']">Logout</a></li>
+                    </ul>
+                </li>
+                <li class="nav-devider"></li>
+                <li class="nav-small-cap">PERSONAL</li>
+                <li>
+                    <a class="has-arrow waves-effect waves-dark" aria-expanded="false"><i
+                            class="mdi mdi-gauge"></i><span class="hide-menu">Principal <span
+                                class="label label-rouded label-themecolor pull-right">4</span></span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li>
+                            <a [routerLink]="['/dashboard']" routerLinkActive="active">Dashboard</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="has-arrow waves-effect waves-dark" aria-expanded="false"><i
+                            class="mdi mdi-gauge"></i><span class="hide-menu">Mantenimientos <span
+                                class="label label-rouded label-themecolor pull-right">4</span></span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li>
+                            <a [routerLink]="['/departamento']" routerLinkActive="active">Departamentos</a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/provincia']" routerLinkActive="active">Provincias</a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/distrito']" routerLinkActive="active">Distritos</a>
+                        </li>
+
+                        <li>
+                            <a [routerLink]="['/categoria']" routerLinkActive="active">Categorias</a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/subcategorias']" routerLinkActive="active">SubCategorias</a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/cliente']" routerLinkActive="active">Clientes</a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/proveedor']" routerLinkActive="active">Proveedores</a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/usuarios']" routerLinkActive="active">Usuarios</a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/cotizacion']" routerLinkActive="active">Cotizacion</a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/unime']" routerLinkActive="active">Unidades de Medida</a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+    </div>
+    <!-- End Sidebar scroll-->
+</aside>
+<!-- ============================================================== -->
+<!-- End Left Sidebar - style you can find in sidebar.scss  -->
+<!-- ============================================================== -->

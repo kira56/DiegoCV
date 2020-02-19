@@ -1,0 +1,136 @@
+<!-- Crear Distrito -->
+
+<div class="modal fade" id="modalCrear" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Crear Distrito</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form class="mt-4 " #formulario="ngForm">
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Nombre:</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objDistritoNew.dist_nom" name="dist_nom" placeholder="Ejm: Computadora,Television,etc">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Provincia:</label>
+                                    <select name="miselect" [(ngModel)]="objDistritoNew.pro_id">
+                                        <option value="" default>Seleccione</option>
+                                        <option [value]="pro.pro_id" *ngFor="let pro of provincias">{{pro.pro_nom}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-block btn-lg btn-dark" [disabled]="!formulario.valid" (click)="CrearDistrito()">
+                        <i class="fas fa-save"></i>
+                        Crear Distrito
+                    </button>
+                    <button type="submit" class="btn btn-block btn-lg btn-dark" (click)="Cancelar()">
+                        <i class="fas fa-arrow-alt-circle-left"></i> Volver
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modificar Datos Categoria -->
+
+<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Bienvenido al menu editar</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form class="mt-4 " #formularios="ngForm">
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Id del Departamento:</label>
+                                    <input type="text" required class="form-control" [(ngModel)]="objDistrito.dist_id" name="cat_id" disabled>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Nombre:</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objDistrito.dist_nom" name="cat_nom" placeholder="Ejm: Computadora,Television,etc">
+                                </div>
+                            </div>
+                        </div>
+
+                        <br>
+                        <hr>
+                        <hr>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-block btn-lg btn-dark" [disabled]="!formularios.valid" (click)="Guardar()">
+                                            <i class="fas fa-save"></i>
+                                            Guardar Distrito
+                                        </button>
+                            <br>
+                            <button type="submit" class="btn btn-block btn-lg btn-dark" (click)="Cancelar()">
+                                <i class="fas fa-arrow-alt-circle-left"></i> Volver
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div>
+        <div class="alert alert-success text-center" role="alert" *ngIf="!distritos">
+            <h4 class="alert-heading">Cargando..</h4>
+            <p>
+                <i class="fa fa-refresh fa-3x fa-spin" aria-hidden="true"></i>
+            </p>
+        </div>
+        <div *ngIf="distritos" class="animated slideInLeft">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let dis of distritos.content">
+                        <td>{{dis.dist_id}}</td>
+                        <td>{{dis.dist_nom}}</td>
+                        <td style="display: flex;">
+                            <button class="btn btn-danger" (click)="eliminarDistrito(dis.dist_id)">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+
+                            <button class="btn btn-secondary ml-2" (click)="abrirModalEditar(dis.dist_id)">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button class="btn btn-dark btnCrear animated tada infinite slow" (click)="AbrirModalCrearDistrito()">
+                <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+            </button>
+    </div>
+</div>

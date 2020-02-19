@@ -1,0 +1,39 @@
+<!--====================================
+     con botones pero en celular no se podra
+==================================== -->
+<!-- <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="gappx">
+    <button style="width: 150px;height: 200px; margin-left: 10px;" *ngFor="let cat of categorias.contenido" mat-raised-button color="primary" (click)="getSelectedSCat(cat.cat_id)">
+            {{cat.cat_nom}}
+    </button>
+</div>
+<div *ngIf="subcategorias">
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="gappx" style="padding: 20px;">
+        <button mat-raised-button style="height: 100px;width: 100px; margin-left: 10px; " color="accent" *ngFor="let sub of subcategorias.content" (click)="anadirSubcategoria(sub)">
+                {{sub.scat_nom}}</button>
+    </div>
+</div> -->
+
+<!--=========================================================
+     FUNCIONALIDAD CON CUADROS DE TEXTO AUTOCOMPLETADOS
+============================================================= -->
+<p>
+    <!-- <mat-checkbox [formControl]="disableSelect">Disable select</mat-checkbox> -->
+</p>
+
+<mat-form-field>
+    <mat-label>Elija una Categoria</mat-label>
+    <mat-select [(value)]="selectedSCat" (selectionChange)="getSelectedSCat()">
+        <mat-option [value]="cat.cat_id" *ngFor="let cat of categorias">{{cat.cat_nom}}</mat-option>
+    </mat-select>
+</mat-form-field>
+
+<br>
+<mat-form-field>
+    <mat-label>Elija una Sub Categoria</mat-label>
+    <mat-select [(value)]="selectedSCat1" (selectionChange)="getSelectedSCat1()">
+        <mat-option [value]="scat.scat_id" *ngFor="let scat of subcategorias">{{scat.scat_nom}}</mat-option>
+    </mat-select>
+</mat-form-field>
+<div>
+    <button mat-button matStepperNext>Next</button>
+</div>

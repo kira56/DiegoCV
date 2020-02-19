@@ -1,0 +1,131 @@
+<!-- Crear Departamento -->
+<div class="modal fade" id="modalCrear" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Crear Departamento</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form class="mt-4 " #formulario="ngForm">
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="">Nombre:</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objDepartamentoNew.dpto_nom" name="dpto_nom" placeholder="Ejm: Apurimac, Abancay, Arequipa">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-block btn-lg btn-dark" [disabled]="!formulario.valid" (click)="CrearDepartamento()">
+                        <i class="fas fa-save"></i>
+                        Registrar
+                    </button>
+                    <button type="submit" class="btn btn-block btn-lg btn-dark" (click)="Cancelar()">
+                        <i class="fas fa-arrow-alt-circle-left"></i> Volver
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modificar Datos Departamento -->
+<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar Departamento</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form class="mt-4 " #formularios="ngForm">
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Id:</label>
+                                    <input type="text" required class="form-control" [(ngModel)]="objDepartamento.dpto_id" name="dpto_id" disabled>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Nombre:</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objDepartamento.dpto_nom" name="dpto_nom" placeholder="Ejm: Valde">
+                                </div>
+                            </div>
+                        </div>
+
+                        <br>
+                        <hr>
+                        <hr>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-block btn-lg btn-dark" [disabled]="!formularios.valid" (click)="Guardar()">
+                                <i class="fas fa-save"></i>
+                                Guardar Departamento
+                            </button>
+                            <br>
+                            <button type="submit" class="btn btn-block btn-lg btn-dark" (click)="Cancelar()">
+                                <i class="fas fa-arrow-alt-circle-left"></i> Volver
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div>
+        <div class="alert alert-success text-center" role="alert" *ngIf="!departamentos">
+            <h4 class="alert-heading">Cargando..</h4>
+            <p>
+                <i class="fa fa-refresh fa-3x fa-spin" aria-hidden="true"></i>
+            </p>
+        </div>
+        <div *ngIf="departamentos" class="animated slideInLeft">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let ca of departamentos.contenido">
+                        <td>{{ca.dpto_id}}</td>
+                        <td>{{ca.dpto_nom}}</td>
+
+                        <td style="display: flex;">
+                            <button class="btn btn-danger" (click)="eliminarDepartamento(ca.dpto_id)">
+                                <i class="fas fa-trash"></i>
+                            </button>
+
+                            <button class="btn btn-secondary ml-2" (click)="abrirModalEditar(ca.dpto_id)">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </td>
+                        <!-- <td>JOe</td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button class="btn btn-dark btnCrear animated tada infinite slow" (click)="AbrirModalCrearDepartamento()">
+                <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+            </button>
+    </div>
+</div>

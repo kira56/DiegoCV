@@ -1,0 +1,128 @@
+<!-- Crear UnidadMedida -->
+
+<div class="modal fade" id="modalCrear" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Crear UnidadMedida</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form class="mt-4 " #formulario="ngForm">
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Nombre:</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objUnidadMedidaNew.um_nom" name="um_nom" placeholder="Ejm: Kilos,Litros,bolsas">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-block btn-lg btn-dark" [disabled]="!formulario.valid" (click)="CrearUnidadMedida()">
+                        <i class="fas fa-save"></i>
+                        Crear UnidadMedida
+                    </button>
+                    <button type="submit" class="btn btn-block btn-lg btn-dark" (click)="Cancelar()">
+                        <i class="fas fa-arrow-alt-circle-left"></i> Volver
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modificar Datos Unidad Medida -->
+
+<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Bienvenido al menu editar</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form class="mt-4 " #formularios="ngForm">
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Id de la UnidadMedida:</label>
+                                    <input type="text" required class="form-control" [(ngModel)]="objUnidadMedida.um_id" name="um_id" disabled>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Nombre:</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objUnidadMedida.um_nom" name="um_nom" placeholder="Ejm: Computadora,Television,etc">
+                                </div>
+                            </div>
+                        </div>
+
+                        <br>
+                        <hr>
+                        <hr>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-block btn-lg btn-dark" [disabled]="!formularios.valid" (click)="Guardar()">
+                                            <i class="fas fa-save"></i>
+                                            Guardar Categoria
+                                        </button>
+                            <br>
+                            <button type="submit" class="btn btn-block btn-lg btn-dark" (click)="Cancelar()">
+                                <i class="fas fa-arrow-alt-circle-left"></i> Volver
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div>
+        <div class="alert alert-success text-center" role="alert" *ngIf="!unidadesdemedida">
+            <h4 class="alert-heading">Cargando..</h4>
+            <p>
+                <i class="fa fa-refresh fa-3x fa-spin" aria-hidden="true"></i>
+            </p>
+        </div>
+        <div *ngIf="unidadesdemedida" class="animated slideInLeft">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let um of unidadesdemedida.contenido">
+                        <td>{{um.um_id}}</td>
+                        <td>{{um.um_nom}}</td>
+                        <td style="display: flex;">
+                            <button class="btn btn-danger" (click)="eliminarUnidadMedida(um.um_id)">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+
+                            <button class="btn btn-secondary ml-2" (click)="abrirModalEditar(um.um_id)">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button class="btn btn-dark btnCrear animated tada infinite slow" (click)="AbrirModalCrearUnidadMedida()">
+                <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+            </button>
+    </div>
+</div>

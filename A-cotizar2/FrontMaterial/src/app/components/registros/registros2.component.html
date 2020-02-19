@@ -1,0 +1,114 @@
+<!-- REGISTRO CLIENTE -->
+
+<div class="cards" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="gappx">>
+    <h4>¡REGISTRATE COMO CLIENTE!</h4>
+    <span>Y disfruta de los beneficios de la red de cotizacion mas efectiva online!</span>
+    <br>
+    <mat-card style="width: 500px;height: auto;margin-top: 30px;margin-bottom: 30px;padding: 40px;">
+        <form style="display: flex;flex-direction: column;margin-top: 10px;" name="form">
+            <label fxLayoutAlign="center center"><strong>Datos de la Cuenta</strong></label>
+
+            <mat-form-field>
+                <input matInput placeholder="Nombres" required [(ngModel)]="objPersona.per_nom" name="cli_nom" />
+                <mat-icon matSuffix>sentiment_satisfied_alt</mat-icon>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Apellidos" required [(ngModel)]="objPersona.per_ape" name="cli_ape">
+                <mat-icon matSuffix>sentiment_satisfied_alt</mat-icon>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Ingrese su email" [(ngModel)]="objUsuario.usu_email" name="usu_email" [formControl]="email" required>
+                <mat-icon matSuffix>email</mat-icon>
+                <mat-error *ngIf="email.invalid">{{mensajeError()}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Password" [(ngModel)]="objUsuario.usu_pass" name="usu_pass" [type]="hide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Repite tu Password" [type]="hide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+            </mat-form-field>
+
+            <mat-form-field>
+                <span matPrefix>+51 &nbsp;</span>
+                <input type="tel" matInput placeholder="Celular" [(ngModel)]="objPersona.per_tel" name="cli_tel">
+                <mat-icon matSuffix>phone_callback
+                </mat-icon>
+            </mat-form-field>
+            <mat-form-field>
+                <input type="number" name="cli_ndoc" [(ngModel)]="objPersona.per_ndoc" matInput placeholder="Ingrese DNI">
+                <mat-icon matSuffix>image_aspect_ratio
+                </mat-icon>
+            </mat-form-field>
+            <table style="width: 100%;">
+                <tr>
+                    <td>
+                        <mat-form-field style="width: 160px;">
+                            <input style="width: 60px;" type="text" matInput placeholder="Departamento" required [matAutocomplete]="autoGroup">
+                            <mat-icon matSuffix>map</mat-icon>
+
+                            <mat-autocomplete #autoGroup="matAutocomplete">
+                                <mat-optgroup *ngFor="let group of distritoGroupOptions | async" [label]="group.letra">
+                                    <mat-option *ngFor="let nombre of group.nombres" [value]="nombre">
+                                        {{nombre}}
+                                    </mat-option>
+                                </mat-optgroup>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field style="width: 160px;">
+                            <input type="text" matInput placeholder="Provincia" required [matAutocomplete]="autoGroup">
+                            <mat-icon matSuffix>location_city</mat-icon>
+
+                            <mat-autocomplete #autoGroup="matAutocomplete">
+                                <mat-optgroup *ngFor="let group of distritoGroupOptions | async" [label]="group.letra">
+                                    <mat-option *ngFor="let nombre of group.nombres" [value]="nombre">
+                                        {{nombre}}
+                                    </mat-option>
+                                </mat-optgroup>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <!-- <mat-form-field style="width: 160px;">
+                            <input style="width: 100%;" type="text" matInput placeholder="Distrito" required [matAutocomplete]="autoGroup">
+                            <mat-icon matSuffix>home</mat-icon>
+
+                            <mat-autocomplete #autoGroup="matAutocomplete">
+                                <mat-optgroup *ngFor="let group of distritoGroupOptions | async" [label]="group.letra">
+                                    <mat-option *ngFor="let nombre of group.nombres" [value]="nombre">
+                                        {{nombre}}
+                                    </mat-option>
+                                </mat-optgroup>
+                            </mat-autocomplete>
+                        </mat-form-field> -->
+                        <mat-form-field>
+                            <mat-label>Distrito</mat-label>
+                            <input matInput placeholder="Distrito" [(ngModel)]="objPersona.per_dir" name="per_dir" required>
+                        </mat-form-field>
+                    </td>
+                </tr>
+            </table>
+            <br>
+        </form>
+        <mat-checkbox required style="font-size: 3px;" [(ngModel)]="checked">Declaro que he leido la nueva Politica de Privacidad y los Términos y Condiciones</mat-checkbox>
+        <br>
+        <div class="boton" style="margin-top: 30px;" fxLayoutAlign="center center">
+            <button mat-raised-button color="warn" (click)="Registrar()">Registrarse</button>
+        </div>
+        <hr style="margin-top: 20px;margin-bottom: 20px;">
+        <div style="width: 100%;" fxLayout="row" fxLayoutAlign="space-around none">
+
+            <button mat-stroked-button color="warn"><i class="fa fa-google" aria-hidden="true"></i> Registrate con Google</button>
+            <button mat-stroked-button color="primary"> <i class="fa fa-facebook" aria-hidden="true"></i> Registrate con Facebook</button>
+        </div>
+    </mat-card>
+</div>X

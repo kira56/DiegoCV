@@ -1,0 +1,131 @@
+<div fxLayout="row" fxLayoutAlign="space-around center" style="margin-top: 20px;">
+    <label>¡REGISTRATE!</label>
+</div>
+<div class="cards" style="display: flex;margin-top: 30px;" fxLayout="row" fxLayoutAlign="space-evenly center" routerLinkActive="active">
+    <mat-card fxLayout="column" fxLayoutAlign="center center" class="ripple" matRipple [matRippleRadius]="radius" [matRippleColor]="color" [routerLink]="['/registroCliente']">
+        <img src="./../../../assets/imagens/personas.png" width="150px" style="border-radius: 50%;">
+        <h3>Soy un cliente</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim laudantium incidunt laboriosam!</p>
+    </mat-card>
+    <mat-card fxLayout="column" fxLayoutAlign="center center" class="ripple" matRipple [matRippleRadius]="radius" [matRippleColor]="color" [routerLink]="['/registroProveedor']">
+        <img src="./../../../assets/imagens/empresa.png" width="300px" style="border-radius: 50%;">
+        <h3>Soy un proveedor</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim laudantium incidunt laboriosam!</p>
+    </mat-card>
+</div>
+
+<!-- <div fxLayout="row" fxLayoutAlign="space-around center" style="margin-top: 20px;">
+    <label>¡REGISTRATE!</label>
+</div>
+<div class="cards" style="display: flex;margin-top: 30px;" fxLayout="row" fxLayoutAlign="space-evenly center" routerLinkActive="active">
+    <mat-card fxLayout="column" fxLayoutAlign="center center" class="ripple" matRipple [matRippleRadius]="radius" [matRippleColor]="color" [routerLink]="['registroCliente']">
+        <img src="https://picsum.photos/200 " style="border-radius: 50%;">
+        <h3>Soy un cliente</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim laudantium incidunt laboriosam!</p>
+    </mat-card>
+    <mat-card fxLayout="column" fxLayoutAlign="center center" class="ripple" matRipple [matRippleRadius]="radius" [matRippleColor]="color">
+        <img src="https://picsum.photos/200" style="border-radius: 50%;">
+        <h3>Soy un proveedor</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim laudantium incidunt laboriosam!</p>
+
+    </mat-card>
+
+</div> -->
+
+
+
+<!-- mat-tab-group mat-stretch-tabs class="registro mat-elevation-z4">
+        <label>REGISTROS</label>
+        <mat-tab label="USUARIO" style="position: relative;display: flex;align-items: center;">
+            <form [formGroup]="distritoForm" class="formularioUsuario" style="display: flex;flex-direction: column;margin-top: 10px;">
+                <mat-form-field>
+                    <input matInput placeholder="Ingrese su email" [formControl]="email" required>
+                    <mat-icon matSuffix class="material-icons-two-tone">email</mat-icon>
+                    <mat-error *ngIf="email.invalid">{{mensajeError()}}</mat-error>
+                </mat-form-field>
+                <table>
+                    <tr>
+                        <td>
+                            <mat-form-field style="width: 240px;">
+                                <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'">
+                                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                <mat-icon class="material-icons-two-tone">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field style="width: 240px;">
+                                <input matInput placeholder="Repite tu Password" [type]="hide ? 'password' : 'text'">
+                                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                <mat-icon class="material-icons-two-tone">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <div class="boton" fxLayoutAlign="center center">
+                <button mat-raised-button color="warn">Registrarse</button>
+            </div>
+        </mat-tab>
+
+        <mat-tab label="PROVEEDOR">
+            <form [formGroup]="distritoForm" class="formularioProovedor" style="display: flex;flex-direction: column;margin-top: 10px;">
+                <mat-form-field>
+                    <input matInput placeholder="Ingrese su email" [formControl]="email" required>
+                    <mat-icon matSuffix class="material-icons-two-tone">email</mat-icon>
+                    <mat-error *ngIf="email.invalid">{{mensajeError()}}</mat-error>
+                </mat-form-field>
+                <table>
+                    <tr>
+                        <td>
+                            <mat-form-field style="width: 240px;">
+                                <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'">
+                                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                <mat-icon class="material-icons-two-tone">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field style="width: 240px;">
+                                <input matInput placeholder="Repite tu Password" [type]="hide ? 'password' : 'text'">
+                                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                <mat-icon class="material-icons-two-tone">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                </table>
+                <mat-form-field>
+                    <textarea matInput placeholder="Razon Social"></textarea>
+                    <mat-icon class="material-icons-two-tone" matSuffix>work</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input type="number" name="RUC" matInput placeholder="Ingrese RUC">
+                    <mat-icon class="material-icons-two-tone" matSuffix>fingerprint</mat-icon>
+                </mat-form-field>
+                <mat-form-field>
+                    <textarea matInput placeholder="Direccion"></textarea>
+                    <mat-icon class="material-icons-two-tone" matSuffix>location_city</mat-icon>
+
+                </mat-form-field>
+                <mat-form-field>
+                    <input type="text" matInput placeholder="Distrito" formControlName="distritoGroup" required [matAutocomplete]="autoGroup">
+                    <mat-icon class="material-icons-two-tone" matSuffix>map</mat-icon>
+
+                    <mat-autocomplete #autoGroup="matAutocomplete">
+                        <mat-optgroup *ngFor="let group of distritoGroupOptions | async" [label]="group.letra">
+                            <mat-option *ngFor="let nombre of group.nombres" [value]="nombre">
+                                {{nombre}}
+                            </mat-option>
+                        </mat-optgroup>
+                    </mat-autocomplete>
+                </mat-form-field>
+            </form>
+            <div class="boton" fxLayoutAlign="center center">
+                <button mat-raised-button color="warn">Registrarse</button>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</div> -->

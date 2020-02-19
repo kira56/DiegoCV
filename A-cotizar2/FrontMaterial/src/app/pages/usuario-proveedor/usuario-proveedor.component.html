@@ -1,0 +1,18 @@
+<mat-sidenav-container class="sidenav" style="height: 100%;width: 100%;display: flex;flex-direction: column;">
+    <mat-sidenav style="width: 350px;height: auto;" #sidenav mode="side">
+        <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="gappx">
+            <img src="https://i.pinimg.com/originals/dc/b5/95/dcb595dd949fd5cfe5ea28c7244dab61.png" width="200px" alt="">
+        </div>
+        <mat-nav-list style="display: flex;flex-direction: column;">
+            <button class="botonCliente" mat-stroked-button color="primary" style="border-radius: 0%;">Perfil</button>
+            <button class="botonCliente" mat-stroked-button color="primary" style="border-radius: 0%;">Datos de la Cuenta</button>
+            <button class="botonCliente" mat-stroked-button color="primary" style="border-radius: 0%;">Tus Cotizaciones</button>
+            <button class="botonCliente" mat-stroked-button color="primary" style="border-radius: 0%;">Salir</button>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <p><button mat-fab color="primary" (click)="sidenav.toggle()">SIDENAV</button></p>
+
+    </mat-sidenav-content>
+</mat-sidenav-container>

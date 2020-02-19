@@ -1,0 +1,114 @@
+<!-- MODAL -->
+<div class="modal fade" id="modalCrear" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">DETALLE DE COTIZACION</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form class="mt-4 " #formulario="ngForm">
+                        <div class="form-group">
+                            <div class="row">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Cant</th>
+                                            <th>ID Producto</th>
+                                            <th>Precio</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let i of listaDetalle">
+                                            <td>{{i.cotie_cant}}</td>
+                                            <td>{{i.cotiedet_id}}</td>
+                                            <td>
+                                                <input type="number">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-block btn-lg btn-dark" [disabled]="!formulario.valid" (click)="guardar()">
+                        <i class="fas fa-save"></i>
+                        GUARDAR
+                    </button>
+                    <button type="submit" class="btn btn-block btn-lg btn-dark" (click)="Cancelar()">
+                        <i class="fas fa-arrow-alt-circle-left"></i> Volver
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <input type="text" class="form-control" placeholder="Buscar Cotizacion">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn" *ngIf="cargando">
+    <div class="col-sm-12">
+        <div class="alert alert-warning text-center">
+            <strong>Cargando</strong>
+            <br>
+            <i class="fa fa-refresh fa-spin fa-2x"></i>
+            <br>
+            <span>Espere Por favor</span>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn" *ngIf="!cargando">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">Cotizaciones Registradas (<small>123</small>)</h3>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nro Cotizacion</th>
+                            <th>Fecha</th>
+                            <th>Estado</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of miscotizaciones">
+                            <td>{{item.cotient_id}}</td>
+                            <td>{{item.cotient_fech}}</td>
+                            <td>{{item.cotient_est}}</td>
+                            <td>
+                                <button class="btn btn-primary" (click)="AbrirModalCrearSubCategoria(item.cotient_id)">
+                                    <i class="fa fa-file-text-o"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="btn btn-secondary">
+                    Anteriores
+                </button>
+                <button class="btn btn-secondary">
+                    Siguientes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

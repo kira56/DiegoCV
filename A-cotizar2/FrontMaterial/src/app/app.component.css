@@ -1,0 +1,106 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+footer {
+    background: #373481;
+    color: #fff;
+    width: 100%;
+    padding: 40px;
+}
+
+.container-footer {
+    margin-top: 50px;
+}
+
+.container-footer-all {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.container-body {
+    display: flex;
+    justify-content: space-between;
+}
+
+.colum1 {
+    max-width: 400px;
+}
+
+.colum2 {
+    max-width: 500px;
+    text-align: center;
+    border-width: 10px;
+}
+
+.colum3 {
+    max-width: 350px;
+}
+
+.colum1 h1 {
+    font-size: 22px;
+}
+
+.colum2 h1 {
+    font-size: 22px;
+}
+
+.colum3 h1 {
+    font-size: 22px;
+}
+
+.colum1 p {
+    font-size: 14px;
+    color: #c7c7c7;
+    margin-top: 20px;
+}
+
+.row {
+    margin-top: 5px;
+    display: flex;
+}
+
+.row2 {
+    margin-top: 5px;
+    display: flex;
+}
+
+.row3 {
+    margin-top: 5px;
+    display: flex;
+}
+
+.row label {
+    margin-top: 10px;
+    margin-left: 20px;
+    width: 310px;
+    text-align: justify;
+}
+
+.row3 label {
+    margin-top: 10px;
+    margin-left: 20px;
+    width: 310px;
+    text-align: justify;
+}
+
+.row i {
+    margin-top: 12px;
+    width: 36px;
+    height: 36px;
+}
+
+.row3 i {
+    margin-top: 12px;
+    width: 36px;
+    height: 36px;
+}
+
+#mapa-mapbox {
+    width: 150%;
+    height: 70%;
+    background-color: skyblue;
+}
